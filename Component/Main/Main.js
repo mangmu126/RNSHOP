@@ -37,7 +37,7 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'home'})}}
           selected={this.state.selectedTab==='home'}
         >
-       
+          <Home/>
         </TabNavigator.Item>
 
        
@@ -49,17 +49,17 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'shop'})}}
           selected={this.state.selectedTab==='shop'}
         >
-        
+            <Shop/>
         </TabNavigator.Item>
        
         <TabNavigator.Item
          title="我的"
           renderIcon={()=><Image source={{uri:'icon_tabbar_mine'}} style={styles.iconStyle}/>}
-          renderSelectedIcon={()=><Image source={{uri:'icon_tabbar_mine_selected'}} style={styles.iconStyle}/>}  >
+          renderSelectedIcon={()=><Image source={{uri:'icon_tabbar_mine_selected'}} style={styles.iconStyle}/>}
           onPress={()=>{this.setState({selectedTab:'mine'})}}
           selected={this.state.selectedTab==='mine'}
-        />
-        
+        >
+         <Mine/>
         </TabNavigator.Item>
         
 
@@ -70,7 +70,7 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'more'})}}
           selected={this.state.selectedTab==='more'}
         >
-        
+        <More/>
         </TabNavigator.Item>
         
  
