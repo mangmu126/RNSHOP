@@ -12,18 +12,55 @@ import {
   View,
   Platform,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 
+var CommonCell = require('./CommonCell');
 var More = React.createClass({
   render() {
     return (
       <View style={styles.container}>
         {/*导航条*/}
         {this.renderNavBar()}
-        <Text style={styles.welcome}>
-         更多
-        </Text>
+        <ScrollView style={{backgroundColor:'#e8e8e8'}}>
+          <View style={{marginTop:20}}>
+              <CommonCell 
+                title='扫一扫'
+              />
+            </View>
+            <View style={{marginTop:20}}>
+              <CommonCell 
+                title='省流量模式'
+                isSwitch={true}
+              />
+              <CommonCell 
+                title='消息提醒'
+              />
+              <CommonCell 
+                title='邀请好友使用码团'
+              />
+              <CommonCell 
+                title='清空缓存'
+                rightTitle="1.99M"
+              />
+            </View>
+            <View style={{marginTop:20}}>
+           
+              <CommonCell 
+                title='问卷调查'
+              />
+              <CommonCell 
+                title='支付帮助'
+              />
+              <CommonCell 
+                title='扫一扫'
+              />
+             
+         
+            </View>
+        </ScrollView>
+
  
       </View>
     );
