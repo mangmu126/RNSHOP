@@ -9,14 +9,24 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 /*--------导入外部的组件类-------------*/
-var Main = require('./Component/Main/Main');
+var LaunchImage = require('./Component/Main/LaunchImage');
 export default class shop extends Component {
   render() {
     return (
-      <Main/>
+       <Navigator
+              initialRoute={{name:'启动页',component:LaunchImage}}
+              configureScene={()=>{
+                return Navigator.SceneConfigs.PushFromRight;
+              }}
+              renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>
+              }}
+          />
     );
   }
 }
