@@ -13,27 +13,20 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-var HomeDetail = require('./HomeDetail');
-
-var Home = React.createClass({
+var HomeDetail = React.createClass({
   render() {
     return (
       <View style={styles.container}>
-      <TouchableOpacity onPress={()=>{this.pushToDetail()}}>
+      <TouchableOpacity onPress={()=>{this.popToHome()}}>
         <Text style={styles.welcome}>
-         首页
+         测试跳转
         </Text>
       </TouchableOpacity>
       </View>
     );
   },
-  // 跳转到二级界面
-  pushToDetail()
-  {
-    this.props.navigator.push({
-      component:HomeDetail,
-      title:'详情页'
-    });
+  popToHome(){
+    this.props.navigator.pop()
   }
 });
 
@@ -42,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'red',
   },
   welcome: {
     fontSize: 20,
@@ -52,4 +45,4 @@ const styles = StyleSheet.create({
 });
 
 // 输出组件类
-module.exports = Home;
+module.exports = HomeDetail;

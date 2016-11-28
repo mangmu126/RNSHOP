@@ -10,7 +10,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  Platform,
+  Navigator
 } from 'react-native';
 /**----------引入外部类------------**/
 import TabNavigator from 'react-native-tab-navigator';
@@ -37,7 +39,16 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'home'})}}
           selected={this.state.selectedTab==='home'}
         >
-          <Home/>
+          <Navigator
+              initialRoute={{name:'首页',component:Home}}
+              configureScene={()=>{
+                return Navigator.SceneConfigs.PushFromRight;
+              }}
+              renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>
+              }}
+          />
         </TabNavigator.Item>
 
        
@@ -49,7 +60,16 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'shop'})}}
           selected={this.state.selectedTab==='shop'}
         >
-            <Shop/>
+         <Navigator
+              initialRoute={{name:'商家',component:Shop}}
+              configureScene={()=>{
+                return Navigator.SceneConfigs.PushFromRight;
+              }}
+              renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>
+              }}
+          />
         </TabNavigator.Item>
        
         <TabNavigator.Item
@@ -59,7 +79,16 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'mine'})}}
           selected={this.state.selectedTab==='mine'}
         >
-         <Mine/>
+         <Navigator
+              initialRoute={{name:'我的',component:Mine}}
+              configureScene={()=>{
+                return Navigator.SceneConfigs.PushFromRight;
+              }}
+              renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>
+              }}
+          />
         </TabNavigator.Item>
         
 
@@ -70,7 +99,16 @@ var Main = React.createClass({
           onPress={()=>{this.setState({selectedTab:'more'})}}
           selected={this.state.selectedTab==='more'}
         >
-        <More/>
+        <Navigator
+              initialRoute={{name:'更多',component:More}}
+              configureScene={()=>{
+                return Navigator.SceneConfigs.PushFromRight;
+              }}
+              renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>
+              }}
+          />
         </TabNavigator.Item>
         
  
@@ -81,8 +119,8 @@ var Main = React.createClass({
 
 const styles = StyleSheet.create({
   iconStyle: {
-    width:30,
-    height:30
+    width:Platform.OS === 'ios' ? 30:25,
+    height:Platform.OS === 'ios' ? 30:25
   }
 });
 
